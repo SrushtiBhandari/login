@@ -1,0 +1,162 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  </head>
+  
+  <body>
+    <div class="tab-content">
+      <div id="service" class="container tab-pane active">
+        <div id="service" class="tab-pane ">
+          <form method="" name="" class="p-4">
+            <h3> Form</h3>
+            <div class="mb-3">
+              <h6 for="exampleInputEmail1" class="form-label">Designation</h6>
+              <input type="text" class="form-control" id="userName" aria-describedby="emailHelp" name="userName">
+            </div>
+            <!-- <h2>Form control: radio buttons</h2>
+              <p>The form below contains three radio buttons. The last option is disabled:</p>
+              <form> -->
+            <h6>Visiblity</h6>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" value="Yes"
+                checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Yes
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" value="No">
+              <label class="form-check-label" for="exampleRadios2">
+                No
+              </label>
+            </div>
+           
+          </form>
+        </div>
+  
+        <div>
+          <button class="btn btn-success btn btn-block" type="button" id="submit" value="submit">Add</button>
+        </div>
+        </form>
+        <hr>
+        <div class="container-fluid">
+          <table class="table table-bordered pl-5" id="td1">
+            <thead>
+              <tr>
+                <th>Designation id</th>
+                <th>Designation Name</th>
+                <th>visibility</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"> </tbody>
+          </table>
+  
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <!-- <script>
+      let count=0;
+    $('#submit').click(function(){
+      let userPos=$('#userName').val();
+      let userAct=$('input[name="exampleRadios"]:checked').val();
+      count++;
+      $('#tableBody').append(`
+      <tr>
+        <td>${count}</td>
+        <td>${userPos}</td>
+        <td>${userAct}</td>
+        <td><button data-dsign="Manger" class="btn btn-success btn-editemp">Edit</button></td>
+      </tr>
+      `)
+      $('#userName').val('');
+    })
+  </script>
+  <script type="text/javascript">
+
+    $("form").submit(function (e) {
+      e.preventDefault();
+      var Dname = $("input[name='Dname']").val();
+      var email = $("input[name='email']").val();
+  
+      $(".data-table tbody").append("<tr data-name='" + Dname + "' data-email='" + visibility + "'><td>" + Dname + "</td><td>" + visibility + "</td><td><button class='btn btn-info btn-xs btn-edit'>Edit</button><button class='btn btn-danger btn-xs btn-delete'>Delete</button></td></tr>");
+  
+      $("input[name='name']").val('');
+      $("input[name='email']").val('');
+    });
+  
+    $("body").on("click", ".btn-editemp", function () {
+      // alert($(this).data("dsign"));  
+      $("#userName").val($(this).data("dsign"));
+    });
+  
+  </script>
+  
+  </html> -->
+  <?php
+// define variables and set to empty values
+$name = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name = test_input($_POST["name"]);
+  $email = test_input($_POST["email"]);
+  $website = test_input($_POST["website"]);
+  $comment = test_input($_POST["comment"]);
+  $gender = test_input($_POST["gender"]);
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+
+<h2>PHP Form Validation Example</h2>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+  Name: <input type="text" name="name">
+  <br><br>
+  E-mail: <input type="text" name="email">
+  <br><br>
+  Website: <input type="text" name="website">
+  <br><br>
+  Comment: <textarea name="comment" rows="5" cols="40"></textarea>
+  <br><br>
+  Gender:
+  <input type="radio" name="gender" value="female">Female
+  <input type="radio" name="gender" value="male">Male
+  <input type="radio" name="gender" value="other">Other
+  <br><br>
+  <input type="submit" name="submit" value="Submit">  
+</form>
+
+<?php
+echo "<h2>Your Input:</h2>";
+echo $name;
+echo "<br>";
+echo $email;
+echo "<br>";
+echo $website;
+echo "<br>";
+echo $comment;
+echo "<br>";
+echo $gender;
+?>
+
+
+  </html>

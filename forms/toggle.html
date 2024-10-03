@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+
+<body>
+  <div class="tab-content">
+    <div id="service" class="container tab-pane active">
+      <div id="service" class="tab-pane ">
+        <form method="" name="" class="p-4">
+          <h3> Form</h3>
+          <div class="mb-3">
+            <h6 for="exampleInputEmail1" class="form-label">Designation</h6>
+            <input type="text" class="form-control" id="srNo" aria-describedby="emailHelp" name="sr_no">
+          </div>
+          <!-- <h2>Form control: radio buttons</h2>
+            <p>The form below contains three radio buttons. The last option is disabled:</p>
+            <form> -->
+          <h6>Visiblity</h6>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              Yes
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+              No
+            </label>
+          </div>
+
+        </form>
+      </div>
+
+      <div>
+        <button class="btn btn-success btn btn-block" onclick="addrow()" type="button" id="submit"
+          value="submit">Add</button>
+      </div>
+      </form>
+      <hr>
+      <div class="container-fluid">
+        <table class="table table-bordered pl-5" id="dataTable">
+          <thead>
+            <tr>
+              <th>Designation id</th>
+              <th>Designation Name</th>
+              <th>visibility</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"> </tbody>
+          <tr>
+            <th>01</th>
+            <th>UI Developer</th>
+            <th>Yes</th>
+            <th><button data-dsign="Manager" class="btn btn-success btn-editemp">Edit</button></th>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  var table = document.getElementById('dataTable')
+  var row = table.getElementsByTagNameNS
+
+</script>
+
+<script>
+  let idCounter = 1;
+  function addrow(){
+    const table = document.getElementById("dataTable");
+        const row = table.insertRow();
+
+        
+        const cell1 = row.insertCell(0);
+        cell1.textContent = idCounter++;
+        const cell2 = row.insertCell(1);
+        const cell3 = row.insertCell(2);
+
+        
+        const DesignationNameInput = document.getElementById("DesignationName");
+        const visibilityInput = document.getElementById("visibility");
+        const name = nameInput.value;
+        const visibility = visibilityInput.value;
+        if (!DesignationName || !visibility) {
+            alert("Please fill in all fields.");
+            return;
+        }
+        cell2.textContent = DesignationName;
+        cell3.textContent = visibility;
+
+        // Clear form inputs
+        DesignationNameInput.value = "";
+        visibility.value = "";
+
+
+  }
+
+</script>
+<!-- 
+
+<script type="text/javascript">
+
+  $("form").submit(function (e) {
+    e.preventDefault();
+    var Dname = $("input[name='Dname']").val();
+    var email = $("input[name='email']").val();
+
+    $(".data-table tbody").append("<tr data-name='" + Dname + "' data-email='" + visibility + "'><td>" + Dname + "</td><td>" + visibility + "</td><td><button class='btn btn-info btn-xs btn-edit'>Edit</button><button class='btn btn-danger btn-xs btn-delete'>Delete</button></td></tr>");
+
+    $("input[name='name']").val('');
+    $("input[name='email']").val('');
+  });
+
+  $("body").on("click", ".btn-editemp", function () {
+    // alert($(this).data("dsign"));  
+    $("#srNo").val($(this).data("dsign"));
+  });
+
+
+
+</script>
+
+<script type="text/javascript">
+  document.getElementById("submit").onclick = function () {
+    document.getElementById("td1");
+
+    var table = document.getElementById("td1");
+    var row = table.insertRow(-1);
+    var srNo = row.insertCell(0);
+    var name = row.insertCell(1);
+    var visibility = row.insertCell(2);
+    srNo.innerHTML = document.getElementById("srNo").value;
+    name.innerHTML = document.getElementById("Dname").value;
+    visibility.innerHTML = document.getElementById("visibility").value;
+    return false;
+  }
+</script>
+
+<script type="text/javascript">
+  document.getElementById("submit1").onclick = function () {
+    document.getElementById("td2");
+
+    var table = document.getElementById("td2");
+    var row = table.insertRow(-1);
+    var Did = row.insertCell(0);
+    var Dname = row.insertCell(1);
+    var visibility = row.insertCell(2);
+    var Action = row.insertCell();
+    Did.innerHTML = document.getElementById("Designation id").value;
+    Dname.innerHTML = document.getElementById("Designation Name").value;
+    visibility.innerHTML = document.getElementById("visibility").value;
+    Action.innerHTML = document.getElementById("Action").value;
+    return false;
+  }
+</script> -->
+
+</html>

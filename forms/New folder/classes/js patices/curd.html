@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 10px;
+            padding: 0;
+
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .mainBox {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .box {
+            width: 300px;
+            text-align: center;
+        }
+
+        input,
+        button {
+            width: 91%;
+            padding: 10px;
+            font-weight: 500;
+            outline: none;
+            margin: 5px 0px;
+        }
+
+        button {
+            width: 100%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            background: #ccc;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        td {
+            font-weight: 100;
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background: #e6e6e6;
+        }
+
+        h1 {
+            background-color: gray;
+            border-radius: 7px;
+            margin-top: 3px;
+            padding: 10px;
+            text-transform: uppercase;
+        }
+
+        .capital {
+            text-transform: capitalize;
+        }
+
+        .fa-trash-o {
+            font-size: 20px;
+            padding: 5px 7px;
+            background: red;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .fa-trash-o:active {
+            color: white;
+            background-color: rgb(179, 33, 33);
+        }
+
+        .fa-pencil {
+            font-size: 20px;
+            padding: 5px 7px;
+            background: #7575f5;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .fa-pencil:active {
+            color: white;
+            background: #3232d3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <div class="mainBox">
+            <div class="box">
+                <h1>Create Students</h1>
+                <input type="text" placeholder="Student Name" id="createName">
+                <input type="text" placeholder="Student Class" id="stdClass">
+                <input type="text" placeholder="Student Division" id="stdDiv">
+                <input type="number" placeholder="Student Age" id="stdAge" min="1" required>
+                <input type="date" id="stdDOB" required>
+                <button id="createBtn">Create Student</button>
+            </div>
+            <div class="box">
+                <h1>Update Student</h1>
+                <input type="text" placeholder="Student Name" id="createName1" required>
+                <input type="text" placeholder="Student Class" id="stdClass1" required>
+                <input type="text" placeholder="Student Division" id="stdDiv1" required>
+                <input type="number" placeholder="Student Age" id="stdAge1" min="1" required>
+                <input type="date" id="stdDOB1" required>
+                <input type="hidden" id="index1" required>
+                <button id="updateBtn">Update Student</button>
+            </div>
+        </div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Class</th>
+                        <th>Division</th>
+                        <th>Age</th>
+                        <th>DOB</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        let stdData = JSON.parse(sessionStorage.getItem('stdInfo')) || [];
+
+        document.querySelector('#createBtn').addEventListener('click', function () {
+            if (!validateForm('create')) return;
+
+            let stdName = document.querySelector('#createName').value;
+            let stdClass = document.querySelector('#stdClass').value;
+            let stdDiv = document.querySelector('#stdDiv').value;
+            let stdAge = document.querySelector('#stdAge').value;
+            let stdDOB = document.querySelector('#stdDOB').value;
+
+            let obj = {
+                std_name: stdName,
+                std_class: stdClass,
+                std_div: stdDiv,
+                std_age: stdAge,
+                std_dob: stdDOB
+            };
+
+            stdData.push(obj);
+            sessionStorage.setItem('stdInfo', JSON.stringify(stdData));
+            showData();
+            clearInputs('create');
+        });
+
+        function validateForm(type) {
+            let isValid = true;
+            const fields = type === 'create' ? ['createName', 'stdClass', 'stdDiv', 'stdAge', 'stdDOB'] : ['createName1', 'stdClass1', 'stdDiv1', 'stdAge1', 'stdDOB1'];
+
+            fields.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value) {
+                    alert(`Please fill in the ${input.placeholder}.`);
+                    isValid = false;
+                }
+            });
+            return isValid;
+        }
+
+        function showData() {
+            let tbody = document.querySelector('tbody');
+            tbody.innerHTML = '';
+            stdData.forEach(function (std, ind) {
+                tbody.innerHTML += `
+                <tr>
+                    <td class="capital">${std.std_name}</td>
+                    <td>${std.std_class}</td>
+                    <td>${std.std_div}</td>
+                    <td>${std.std_age}</td>
+                    <td>${std.std_dob}</td>
+                    <td>
+                        <i class="fa fa-trash-o" onclick="deleteRow(${ind})"></i>
+                        <i class="fa fa-pencil" onclick="editRow(${ind})"></i>
+                    </td>
+                </tr>
+                `;
+            });
+        }
+
+        function clearInputs(type) {
+            const inputs = type === 'create' ? ['createName', 'stdClass', 'stdDiv', 'stdAge', 'stdDOB'] : ['createName1', 'stdClass1', 'stdDiv1', 'stdAge1', 'stdDOB1'];
+            inputs.forEach(id => document.getElementById(id).value = '');
+        }
+
+        function deleteRow(ind) {
+            stdData.splice(ind, 1);
+            sessionStorage.setItem('stdInfo', JSON.stringify(stdData));
+            showData();
+        }
+
+        function editRow(index) {
+            document.querySelector('#createName1').value = stdData[index].std_name;
+            document.querySelector('#stdClass1').value = stdData[index].std_class;
+            document.querySelector('#stdDiv1').value = stdData[index].std_div;
+            document.querySelector('#stdAge1').value = stdData[index].std_age;
+            document.querySelector('#stdDOB1').value = stdData[index].std_dob;
+            document.querySelector('#index1').value = index;
+        }
+
+        document.querySelector('#updateBtn').addeventListener('click', function () {
+            if (!validateForm('update')) return;
+
+            let index = document.querySelector('#index1').value;
+            let obj = {
+                std_name: document.querySelector('#createName1').value,
+                std_class: document.querySelector('#stdClass1').value,
+                std_div: document.querySelector('#stdDiv1').value,
+                std_age: document.querySelector('#stdAge1').value,
+                std_dob: document.querySelector('#stdDOB1').value
+            };
+
+            stdData.splice(index, 1, obj);
+            sessionStorage.setItem('stdInfo', JSON.stringify(stdData));
+            showData();
+            clearInputs('update');
+        });
+
+        showData();
+    </script>
+</body>
+
+</html>

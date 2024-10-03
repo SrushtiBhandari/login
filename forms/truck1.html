@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS link -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Optional: Add custom CSS -->
+    <link rel="stylesheet" href="truck1.css">
+</head>
+
+<body>
+    <div class="mt-5">
+        <div class="text-center mb-4">
+            <h1 class="text-white bg-purple py-2">Transportations</h1>
+        </div>
+
+        <div class="text-center mb-4">
+            <h2>Truck Information</h2>
+        </div>
+
+        <div class="mb-4 m-5">
+            <button class="btn btn-primary mx-2" id="addSalesBtn">Add Truck</button>
+            <button class="btn btn-primary mx-2" id="getAllSalesBtn">Get All Truck</button>
+        </div>
+
+        <form class="border m-5 p-4 rounded bg-light">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="product">Origin:</label>
+                    <input type="text" class="form-control" id="product" placeholder="Origin" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Destionation">Destionation:</label>
+                    <input type="text" class="form-control" id="quantity" placeholder="Destionation" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="time">Dispatch Time:</label>
+                    <input type="time" class="form-control" id="price" placeholder="Dispatch Time" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="time">Expected Delivery Time:</label>
+                    <input type="time" class="form-control" id="price" placeholder="Expected Delivery Time" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Destionation">Status:</label>
+                    <input type="text" class="form-control" id="Status" placeholder="Status" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Add Truck</button>
+        </form>
+    </div>
+
+            <table *ngIf="showTable" class="table mt-5">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Origin</th>
+                        <th> Destionation</th>
+                        <th>Dispatch Time</th>
+                        <th>Expected Delivery Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <!-- Add rows dynamically with Angular -->
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

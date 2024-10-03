@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex; /* Ensures boxes are in a row by default */
+            flex-wrap: wrap; /* Allows wrapping for responsiveness */
+            gap: 10px; /* Adds some spacing between the boxes */
+        }
+
+        .box {
+            background-color: blueviolet;
+            height: 150px;
+            width: 150px;
+            clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk5l_uZeDdd5nB5mE5VMLBekk6SOIRR2Tp9g&s);
+            background-size: cover;
+            display: flex; /* Enables flexbox within each box */
+            justify-content: center; /* Centers content horizontally */
+            align-items: center; /* Centers content vertically */
+        }
+
+        /* @media screen and (max-width: 900px) {
+            section {
+                flex-direction: column;
+                align-items: center; 
+            }
+        } */
+    </style>
+</head>
+<body>
+    <section>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </section>
+</body>
+</html>

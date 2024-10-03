@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style src="programjs.js"></style>
+</head>
+
+<body>
+    <h1>hello word</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sapiente atque commodi dolorum dicta veritatis
+        optio quisquam. Suscipit error voluptatibus, consectetur, hic veniam, explicabo fuga libero saepe nesciunt at
+        corporis?</p>
+    <h1 id="abc"></h1>
+    <script>
+        document.write("my name is xyz<br>")
+        document.write("welcome : ")
+        document.write(prompt("enter name"))
+        document.write(confirm("exist"))
+        document.getElementById("abc", "<br>")
+        // Number
+        var a = 10
+        document.write(typeof a)
+        document.write("<br>")
+        var name = "srushti bhandari"
+        document.write(typeof name, "<br>")
+        document.write(name.toUpperCase(), "<br>")
+        document.write(name.toLowerCase(), "<br>")
+        document.write(name.charAt(3))
+        document.write("<br>")
+        //boolean
+        var a = true
+        var b = false
+        document.write(a)
+        document.write('<br>')
+        //object
+        var ob = { 'srushti': 'bhandari' }
+        document.write(ob['name'])
+        document.write("<br>")
+
+        //array
+        var a = 56
+        var nams = [1, 2, 3, 4, 5]
+        document.write(nams.length)
+        document.write("<br>")
+        document.write(nams[3])
+        document.write("<br>")
+        var n = prompt("enter number")
+        var a = parseInt(n)
+        if (a > 0) {
+            document.write("positive")
+        }
+        else if (a < 0) {
+            document.write("negative")
+        }
+        else void
+            document.write("zero")
+        //for loop
+        //startpoint:initialization
+        //ending of the loop
+        //increment/decrenent
+        for (var i = 1; i <= 10; i++) {
+            Document.write("<h2>", "Hello World", i, "</h2>")
+        }
+    </script>
+</body>
+
+</html>

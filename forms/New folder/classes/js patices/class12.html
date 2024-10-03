@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose the Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f8f8;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: red;
+            margin-bottom: 50px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .books-container {
+            display:0 flex;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .book {
+            width: 120px;
+            height: 100px;
+            background-color: #333;
+            position: relative;
+            color: white;
+            text-align: center;
+            padding-top: 70px;
+            font-size: 14px;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+            animation-delay: 0.5s;
+            box-shadow: 20px 20px 0px gray;
+        }
+
+        .book:hover {
+            transform: scale(1.1);
+            
+        }
+
+        .book::before {
+            content: 'NEW';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: red;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            transform: rotate(45deg);
+            transform-origin: top right;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CHOOSE THE BOOK</h1>
+    <div class="books-container">
+        <div class="book">Book Name Here</div>
+        <div class="book">Book Name Here</div>
+        <div class="book">Book Name Here</div>
+    </div>
+</body>
+</html>

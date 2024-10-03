@@ -1,0 +1,98 @@
+ sales-container {
+    width: 80%; 
+    margin: 0 auto; 
+    padding: 20px; 
+  }
+  
+  .sales-container h2 {
+    text-align: center;
+    margin-bottom: 20px; 
+  }
+  
+  .sales-container button {
+    padding: 10px 20px; 
+    margin-right: 10px; 
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+  }
+  
+  .sales-container button:hover {
+    background-color: #0056b3; 
+  }
+  
+  .sales-container form {
+    margin-top: 20px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+  }
+  
+  .sales-container label {
+    width: 100px; 
+    margin-bottom: 10px; 
+  }
+  
+  .sales-container input {
+    width: calc(50% - 120px); 
+    padding: 8px; 
+    margin-bottom: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+  }
+  
+  .sales-container button[type="submit"] {
+    background-color: #28a745; 
+    color: white;
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 20px;
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+  }
+  
+  .sales-container button[type="submit"]:hover {
+    background-color: #218838;
+  }
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  
+  
+  
+  .sales-container table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .sales-container table th,
+  .sales-container table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .sales-container table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .sales-container table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .sales-container table tbody tr:hover {
+    background-color: #ddd;
+  }
+  
+  .sales-container .error {
+    color: #dc3545;
+    margin-top: 10px;
+  } 
